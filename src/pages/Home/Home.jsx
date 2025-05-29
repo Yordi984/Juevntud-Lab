@@ -1,39 +1,81 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 
-const Home = () => {
+function App() {
+  useEffect(() => {
+    // Animación del subtítulo y CTA (ya están visibles en el HTML)
+
+    // Efecto de aparición para las secciones al hacer scroll
+    const observerOptions = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, observerOptions);
+
+    // Observar elementos que deben aparecer al hacer scroll
+    document
+      .querySelectorAll(".feature-card, .testimonial-card")
+      .forEach((card) => {
+        observer.observe(card);
+      });
+  }, []);
+
   return (
     <div className="home-container">
-      {/* Header Fixed */}
+      {/* Header modificado con elementos de flexjobs */}
       <header className="main-header">
         <div className="logo">
-          <span className="logo-icon">JL</span>
-          <span className="logo-text">JuventudLab</span>
+          <img
+            src="Logo.png"
+            alt="Logo de la empresa"
+            className="logo-img"
+            width="300"
+            height="auto"
+          />
         </div>
-        <a href="/register" className="register-btn">
-          Registrarse
-        </a>
+
+        <div className="auth-buttons">
+          <a href="/Login" className="login-btn">
+            Iniciar sesión
+          </a>
+          <a href="/Login" className="register-btn">
+            Regístrate
+          </a>
+        </div>
       </header>
 
-      {/* Hero Section (Full Viewport) */}
+      {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1>
-            Tu <span>primer trabajo</span> mientras estudias
+          <h1 className="title-animation">
+            Construye algo <span className="highlight-word">increíble</span>
+            <span className="cursor">|</span>
           </h1>
-          <p className="hero-subtitle">
-            Conectamos estudiantes con empleadores que valoran tu formación
+          <p className="hero-subtitle visible">
+            Nuestra plataforma te ayuda a crear proyectos asombrosos con
+            herramientas poderosas y un diseño intuitivo.
           </p>
-          <div className="hero-cta">
-            <a href="/register" className="primary-cta">
+          <div className="hero-cta visible">
+            <a href="/login" className="primary-cta">
               Comenzar ahora
+              <span className="hover-effect"></span>
             </a>
-            <a href="/how-it-works" className="secondary-cta">
-              Cómo funciona
+            <a href="/Demo" className="secondary-cta">
+              Ver demo
+              <span className="hover-effect"></span>
             </a>
           </div>
         </div>
         <div className="scroll-down">
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
           <div className="chevron"></div>
           <div className="chevron"></div>
           <div className="chevron"></div>
@@ -43,77 +85,136 @@ const Home = () => {
       {/* Features Section */}
       <section className="features-section">
         <div className="section-title">
-          <h2>Beneficios exclusivos para estudiantes</h2>
-          <p>Diseñado pensando en tus necesidades académicas</p>
+          <h2>Características principales</h2>
+          <p>
+            Descubre todo lo que nuestra plataforma puede ofrecerte para
+            impulsar tu productividad y creatividad
+          </p>
         </div>
-
         <div className="features-grid">
           <div className="feature-card">
-            <div className="feature-icon">🕒</div>
-            <h3>Horarios flexibles</h3>
-            <p>Trabaja cuando no tengas clases o exámenes</p>
+            <div className="feature-icon">
+              <i className="fas fa-bolt"></i>
+            </div>
+            <h3>Rápido y eficiente</h3>
+            <p>
+              Optimizado para ofrecer el mejor rendimiento incluso en
+              dispositivos con recursos limitados.
+            </p>
           </div>
-
           <div className="feature-card">
-            <div className="feature-icon">🏫</div>
-            <h3>Cerca de tu universidad</h3>
-            <p>Oportunidades laborales a minutos de tu campus</p>
+            <div className="feature-icon">
+              <i className="fas fa-cogs"></i>
+            </div>
+            <h3>Personalizable</h3>
+            <p>
+              Ajusta cada aspecto de la plataforma para que se adapte
+              perfectamente a tus necesidades.
+            </p>
           </div>
-
           <div className="feature-card">
-            <div className="feature-icon">💡</div>
-            <h3>Relacionado a tu carrera</h3>
-            <p>Gana experiencia en tu campo de estudio</p>
+            <div className="feature-icon">
+              <i className="fas fa-shield-alt"></i>
+            </div>
+            <h3>Seguro</h3>
+            <p>
+              Tus datos están protegidos con cifrado de última generación y
+              copias de seguridad automáticas.
+            </p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <i className="fas fa-users"></i>
+            </div>
+            <h3>Colaborativo</h3>
+            <p>
+              Trabaja en equipo en tiempo real con herramientas diseñadas para
+              la colaboración eficiente.
+            </p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <i className="fas fa-chart-line"></i>
+            </div>
+            <h3>Analíticas</h3>
+            <p>
+              Obtén insights valiosos con nuestros dashboards y herramientas de
+              análisis integradas.
+            </p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <i className="fas fa-plug"></i>
+            </div>
+            <h3>Integraciones</h3>
+            <p>
+              Conecta con tus herramientas favoritas a través de nuestra API y
+              extensiones.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials Section */}
       <section className="testimonials-section">
         <div className="section-title dark">
           <h2>Lo que dicen nuestros usuarios</h2>
-          <p>Estudiantes reales, experiencias reales</p>
+          <p>Miles de equipos en todo el mundo confían en nuestra plataforma</p>
         </div>
-
         <div className="testimonials-grid">
           <div className="testimonial-card">
             <p>
-              "Gracias a JuventudLab conseguí un trabajo que me permite pagar
-              mis estudios y ganar experiencia en mi área"
+              Esta plataforma ha transformado completamente nuestra forma de
+              trabajar. La colaboración en tiempo real y las herramientas
+              integradas nos han ahorrado cientos de horas.
             </p>
             <div className="user-info">
               <div className="user-avatar">M</div>
               <div className="user-details">
                 <h4>María González</h4>
-                <p>Estudiante de Ingeniería</p>
+                <p>CEO, TechSolutions</p>
               </div>
             </div>
           </div>
-
           <div className="testimonial-card">
             <p>
-              "Los empleadores aquí entienden que somos estudiantes primero.
-              ¡Totalmente recomendado!"
+              Como desarrollador, aprecio especialmente la API bien documentada
+              y las integraciones fluidas. Ha sido un cambio radical en nuestra
+              productividad.
             </p>
             <div className="user-info">
               <div className="user-avatar">C</div>
               <div className="user-details">
-                <h4>Carlos Mendoza</h4>
-                <p>Estudiante de Administración</p>
+                <h4>Carlos Martínez</h4>
+                <p>CTO, DevTeam</p>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial-card">
+            <p>
+              La curva de aprendizaje fue mínima y en menos de una semana todo
+              el equipo estaba usando la plataforma a pleno rendimiento.
+              ¡Increíble!
+            </p>
+            <div className="user-info">
+              <div className="user-avatar">A</div>
+              <div className="user-details">
+                <h4>Ana López</h4>
+                <p>Directora de Marketing</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA Section */}
       <section className="final-cta-section">
-        <h2>¿Listo para empezar?</h2>
+        <h2>¿Listo para comenzar?</h2>
         <p>
-          Regístrate ahora y accede a las mejores oportunidades laborales para
-          estudiantes
+          Únete a miles de equipos que ya están transformando su forma de
+          trabajar con nuestra plataforma.
         </p>
-        <a href="/register" className="cta-button">
+        <a href="#" className="cta-button">
           Crear cuenta gratis
         </a>
       </section>
@@ -123,53 +224,68 @@ const Home = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="logo">
-              <span className="logo-icon">JL</span>
-              <span className="logo-text">JuventudLab</span>
+              <div className="logo-icon">L</div>
+              <div className="logo-text">Logo</div>
             </div>
-            <p>Conectando el talento estudiantil desde 2025</p>
+            <p>
+              Construimos herramientas poderosas para equipos ambiciosos.
+              Nuestra misión es ayudarte a alcanzar tu máximo potencial.
+            </p>
           </div>
-
           <div className="footer-links">
             <div className="link-column">
-              <h4>Empresa</h4>
-              <a href="/about">Sobre nosotros</a>
-              <a href="/team">Nuestro equipo</a>
-              <a href="/careers">Carreras</a>
+              <h4>Producto</h4>
+              <a href="#">Características</a>
+              <a href="#">Precios</a>
+              <a href="#">Integraciones</a>
+              <a href="#">Actualizaciones</a>
             </div>
-
             <div className="link-column">
               <h4>Recursos</h4>
-              <a href="/blog">Blog</a>
-              <a href="/guides">Guías</a>
-              <a href="/faq">Preguntas frecuentes</a>
+              <a href="#">Documentación</a>
+              <a href="#">Tutoriales</a>
+              <a href="#">API</a>
+              <a href="#">Comunidad</a>
             </div>
-
+            <div className="link-column">
+              <h4>Empresa</h4>
+              <a href="#">Nosotros</a>
+              <a href="#">Blog</a>
+              <a href="#">Carreras</a>
+              <a href="#">Contacto</a>
+            </div>
             <div className="link-column">
               <h4>Legal</h4>
-              <a href="/privacy">Privacidad</a>
-              <a href="/terms">Términos</a>
-              <a href="/cookies">Cookies</a>
+              <a href="#">Privacidad</a>
+              <a href="#">Términos</a>
+              <a href="#">Seguridad</a>
+              <a href="#">Cookies</a>
             </div>
           </div>
         </div>
-
         <div className="footer-bottom">
-          <p>© 2025 JuventudLab. Todos los derechos reservados.</p>
+          <p>© 2023 NombreEmpresa. Todos los derechos reservados.</p>
           <div className="social-links">
-            <a href="#" aria-label="Instagram">
-              📸
+            <a href="#">
+              <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" aria-label="Twitter">
-              🐦
+            <a href="#">
+              <i className="fab fa-facebook"></i>
             </a>
-            <a href="#" aria-label="LinkedIn">
-              💼
+            <a href="#">
+              <i className="fab fa-linkedin"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-youtube"></i>
             </a>
           </div>
         </div>
       </footer>
     </div>
   );
-};
+}
 
-export default Home;
+export default App;
