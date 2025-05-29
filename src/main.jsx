@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import AppRegistro from './AppRegistro.jsx'
 import 'bootstrap/dist/css/bootstrap.css'
-import './index.css'
+import './registro.css'
 
 const rootElement = document.getElementById('root')
 if (rootElement) {
   createRoot(rootElement).render(
     <React.StrictMode>
-      <App />
+      <AppRegistro />
     </React.StrictMode>
   )
 }

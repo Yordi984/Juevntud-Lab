@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './registro.css'
 
-function RegistroEstudiante() {
+function Registro() {
   const [nombre, setNombre] = useState('')
   const [apellidos_maternos, setApellidosMaternos] = useState('')
   
@@ -106,4 +106,4 @@ function RegistroEstudiante() {
   )
 }
 
-export default RegistroEstudiante
+export default Registro

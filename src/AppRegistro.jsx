@@ -1,13 +1,13 @@
-import Perfil from './Perfil'
+import Registro from './Registro'
 
-function App() {
+function AppRegistro() {
   return (
     <>
       <nav className="navbar navbar-light bg-light px-4">
 
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
-            <a href='/'>
+            <a href='/Home'>
               <img src='/logo.png' alt="logo " style={{ height: '40px', marginRight: '10px' }}/>
               
             </a>
@@ -16,9 +16,9 @@ function App() {
         </div>
 
       </nav>
-      <Perfil />
+      <Registro />
     </>
   )
 }
 
-export default App
+export default AppRegistro
