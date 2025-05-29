@@ -1,4 +1,4 @@
-/* Reset y estilos base */
+/* Variables */
 :root {
   --primary: #4361ee;
   --primary-dark: #3a56d4;
@@ -12,6 +12,7 @@
   --black: #000000;
 }
 
+/* Reset y estilos base */
 * {
   margin: 0;
   padding: 0;
@@ -52,23 +53,81 @@ body {
   gap: 0.75rem;
 }
 
-.logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
+.logo-img {
   height: 40px;
-  background-color: var(--primary);
-  color: var(--white);
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  width: auto;
 }
 
 .logo-text {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--dark);
+}
+
+/* Nuevos estilos para la barra de búsqueda como en flexjobs */
+.search-container {
+  display: flex;
+  flex-grow: 1;
+  max-width: 600px;
+  margin: 0 2rem;
+  gap: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.search-advanced {
+  font-size: 0.9rem;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: 2rem;
+}
+
+.nav-links a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.login-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .register-btn {
@@ -106,24 +165,68 @@ body {
       no-repeat center center;
   background-size: cover;
   color: var(--white);
+  position: relative;
 }
 
 .hero-content {
   max-width: 900px;
-  margin-top: 80px; /* Compensa el header fixed */
+  margin-top: 80px;
 }
 
-.hero-section h1 {
-  font-size: 4rem;
+/* Título animado */
+.title-animation {
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1.2;
+  position: relative;
 }
 
-.hero-section h1 span {
+/* Palabra destacada con subrayado animado */
+.highlight-word {
   color: var(--accent);
+  position: relative;
+  display: inline-block;
 }
 
+.highlight-word::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: underlineGrow 0.5s forwards 1.5s;
+}
+
+@keyframes underlineGrow {
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Cursor animado */
+.cursor {
+  animation: blink 1s infinite;
+  opacity: 0;
+  animation-delay: 1s;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Subtítulo animado */
 .hero-subtitle {
   font-size: 1.5rem;
   margin-bottom: 3rem;
@@ -131,15 +234,32 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
 }
 
+.hero-subtitle.visible {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* CTA animado */
 .hero-cta {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease 0.3s;
 }
 
+.hero-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botones */
 .primary-cta,
 .secondary-cta {
   padding: 1rem 2rem;
@@ -148,6 +268,9 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .primary-cta {
@@ -171,6 +294,25 @@ body {
   transform: translateY(-3px);
 }
 
+/* Efecto hover para botones */
+.hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.primary-cta:hover .hover-effect,
+.secondary-cta:hover .hover-effect {
+  transform: translateY(0);
+}
+
+/* Scroll animado con mouse y chevrons */
 .scroll-down {
   position: absolute;
   bottom: 40px;
@@ -179,6 +321,42 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--white);
+  border-radius: 15px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.wheel {
+  width: 4px;
+  height: 10px;
+  background: var(--white);
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+  0% {
+    top: 10px;
+    opacity: 1;
+  }
+  50% {
+    top: 20px;
+    opacity: 0.5;
+  }
+  100% {
+    top: 10px;
+    opacity: 1;
+  }
 }
 
 .chevron {
@@ -270,6 +448,7 @@ section {
 .feature-icon {
   font-size: 3.5rem;
   margin-bottom: 2rem;
+  color: var(--primary);
 }
 
 .feature-card h3 {
@@ -403,7 +582,6 @@ section {
 /* Footer */
 .main-footer {
   width: 100%;
-
   background-color: var(--dark);
   color: var(--white);
   padding: 5rem 5% 2rem;
@@ -554,6 +732,15 @@ section {
   .footer-links {
     width: 100%;
   }
+
+  /* Ajustes para el header en móvil */
+  .search-container {
+    display: none;
+  }
+
+  .nav-links {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -585,5 +772,15 @@ section {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+
+  .auth-buttons {
+    gap: 0.5rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
