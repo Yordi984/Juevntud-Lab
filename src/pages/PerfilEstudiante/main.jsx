@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './perfil.css' 
-import App from './App'
+import AppEstudiante from './AppEstudiante'
 
 const rootElement = document.getElementById('root')
 

@@ -1,6 +1,6 @@
 import PerfilEstudiante from './PerfilEstudiante'
 
-function App() {
+function AppEstudiante() {
    const datosUsuario = {
     nombre: '',
     apellidoPaterno: '',
@@ -34,4 +34,4 @@ function App() {
   )
 }
 
-export default App
+export default AppEstudiante
