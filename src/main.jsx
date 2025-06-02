@@ -23,11 +23,17 @@ ReactDOM.createRoot(root).render(
       <Route path="/LoginEstudiante" element={<LoginEstudiante />} />
 
       <Route path="/Demo" element={<Demo />} />
+<<<<<<< HEAD
 
       <Route path="/CrearTrabajos" element={<CrearTrabajos />} />
       <Route path="CrearEmpresa" element={<LoginEmpresa />} />
 
       <Route path="/Trabajos/Ver" element={<Ver />} />
+=======
+      <Route path="/PerfilReclutador" element={<PerfilReclutador />} />
+      <Route path="/PerfilEstudiante" element={<PerfilEstudiante />} />
+      <Route path="/Registro" element={<Registro />} />
+>>>>>>> 849cd1fc6ec5a84fe03fe4aaad88c5b69b6c698c
     </Routes>
   </BrowserRouter>
 );
