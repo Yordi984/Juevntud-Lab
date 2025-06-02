@@ -32,7 +32,7 @@ function App() {
       <header className="main-header">
         <div className="logo">
           <img
-            src="Logo.png"
+            src="/logo.jpg"
             alt="Logo de la empresa"
             className="logo-img"
             width="300"
@@ -41,10 +41,10 @@ function App() {
         </div>
 
         <div className="auth-buttons">
-          <a href="/Login" className="login-btn">
+          <a href="/LoginEstudiante" className="login-btn">
             Iniciar sesión
           </a>
-          <a href="/Login" className="register-btn">
+          <a href="/Elegir" className="register-btn">
             Regístrate
           </a>
         </div>
