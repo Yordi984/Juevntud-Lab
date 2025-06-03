@@ -8,6 +8,10 @@ import Elegir from "./pages/Elegir/Elegir";
 import Login from "./pages/Login/login";
 import Home from "./pages/Home/Home";
 import Demo from "./pages/Demo/Dashboard";
+import PerfilEstudiante from "./pages/PerfilEstudiante/PerfilEstudiante";
+import PerfilReclutador from "./pages/PerfilReclutador/PerfilReclutador";
+import RegistroRafa from "./pages/Registro/index";
+import VerTrabajos from "./pages/Trabajos/VerTrabajos";
 
 const root = document.getElementById("root");
 
@@ -21,6 +25,10 @@ ReactDOM.createRoot(root).render(
       <Route path="/Demo" element={<Demo />} />
       <Route path="/CrearTrabajos" element={<CrearTrabajos />} />
       <Route path="CrearEmpresa" element={<LoginEmpresa />} />
+      <Route path="/PerfilEstudiante" element={<PerfilEstudiante />} />
+      <Route path="/PerfilReclutador" element={<PerfilReclutador />} />
+      {/* <Route path="/RegistroRafa" element={<RegistroRafa />} /> */}
+      <Route path="/VerTrabajos" element={<VerTrabajos />} />
     </Routes>
   </BrowserRouter>
 );

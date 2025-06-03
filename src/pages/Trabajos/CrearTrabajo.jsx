@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./CrearTrabajo.css"; // Asegúrate de tener este archivo con estilos similares al login
+import "./CrearTrabajo.css";
 
 const CrearTrabajo = () => {
   const [formData, setFormData] = useState({
@@ -14,131 +13,103 @@ const CrearTrabajo = () => {
     fecha_limite: "",
   });
 
-  const [mensaje, setMensaje] = useState("");
-
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMensaje("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/trabajos",
-        formData
-      );
-      setMensaje("Trabajo creado exitosamente.");
-      console.log("Trabajo creado:", response.data);
-      setFormData({
-        titulo: "",
-        descripcion: "",
-        area: "",
-        habilidades_requeridas: "",
-        tipo: "",
-        fecha_publicacion: "",
-        fecha_limite: "",
+      const res = await fetch("http://localhost:3000/trabajos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    } catch (error) {
-      if (error.response) {
-        setMensaje(error.response.data.message || "Error al crear trabajo.");
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Trabajo creado correctamente");
+        setFormData({
+          titulo: "",
+          descripcion: "",
+          area: "",
+          habilidades_requeridas: "",
+          tipo: "",
+          fecha_publicacion: "",
+          fecha_limite: "",
+        });
       } else {
-        setMensaje("Error de conexión con el servidor.");
+        alert(data.message || "Error al crear trabajo");
       }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error de red");
     }
   };
 
   return (
-    <div className="hero">
-      <div className="form-card">
-        <h2 className="form-title">Crear Oferta de Trabajo</h2>
-        <form className="form" onSubmit={handleSubmit}>
-          <label>
-            Título:
-            <input
-              type="text"
-              name="titulo"
-              value={formData.titulo}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Descripción:
-            <textarea
-              name="descripcion"
-              value={formData.descripcion}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Área:
-            <input
-              type="text"
-              name="area"
-              value={formData.area}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Habilidades requeridas:
-            <textarea
-              name="habilidades_requeridas"
-              value={formData.habilidades_requeridas}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Tipo de trabajo:
-            <select
-              name="tipo"
-              value={formData.tipo}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Seleccionar</option>
-              <option value="Medio tiempo">Medio tiempo</option>
-              <option value="Tiempo completo">Tiempo completo</option>
-              <option value="Prácticas">Prácticas</option>
-            </select>
-          </label>
-          <label>
-            Fecha de publicación:
-            <input
-              type="date"
-              name="fecha_publicacion"
-              value={formData.fecha_publicacion}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Fecha límite:
-            <input
-              type="date"
-              name="fecha_limite"
-              value={formData.fecha_limite}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <button type="submit" className="btn-primary">
-            Crear Trabajo
-          </button>
-        </form>
-        {mensaje && (
-          <p style={{ marginTop: "16px", textAlign: "center", color: "#333" }}>
-            {mensaje}
-          </p>
-        )}
-      </div>
+    <div className="form-container">
+      <h2>Registrar Trabajo</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="titulo"
+          placeholder="Título del trabajo"
+          value={formData.titulo}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="descripcion"
+          placeholder="Descripción"
+          value={formData.descripcion}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="area"
+          placeholder="Área"
+          value={formData.area}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="habilidades_requeridas"
+          placeholder="Habilidades requeridas"
+          value={formData.habilidades_requeridas}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="tipo"
+          placeholder="Tipo de trabajo (ej. remoto/presencial)"
+          value={formData.tipo}
+          onChange={handleChange}
+          required
+        />
+        <label>Fecha de publicación:</label>
+        <input
+          type="date"
+          name="fecha_publicacion"
+          value={formData.fecha_publicacion}
+          onChange={handleChange}
+          required
+        />
+        <label>Fecha límite:</label>
+        <input
+          type="date"
+          name="fecha_limite"
+          value={formData.fecha_limite}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Crear trabajo</button>
+      </form>
     </div>
   );
 };
