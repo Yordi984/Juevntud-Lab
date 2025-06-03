@@ -35,7 +35,7 @@ function Registro() {
 
   const enviarFormulario = async () => {
     const datos = { nombre, apellidos_paternos, apellidos_maternos, edad, carrera, email, password }
-    await fetch('/api/estudiantes', {
+    await fetch('http://localhost:3000/PerfilEstudiante', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)
