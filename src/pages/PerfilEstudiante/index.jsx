@@ -1,6 +1,20 @@
+import { useState, useEffect } from 'react'
 import './perfil.css'
 
-function PerfilEstudiante({ datosUsuario }) {
+function PerfilEstudiante() {
+
+  const [datosEstudiante, setDatosEstudiante] = useState({
+    nombre: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    universidad: '',
+    curso: '',
+    semestre: '',
+    horarios: '',
+    experiencia: []
+    
+  })
+
   const {
     nombre,
     apellidoPaterno,
@@ -14,7 +28,15 @@ function PerfilEstudiante({ datosUsuario }) {
     experiencia,
     biografia,
     github
-  } = datosUsuario
+  } = datosEstudiante
+
+  useEffect(() => {
+    fetch('http://localhost:3000/estudiante')
+      .then(res => res.json())
+      .then(data => setDatosEstudiante(data))
+      .catch(() => {}) 
+  }, [])
+
 
   const nombreCompleto = `${nombre} ${apellidoPaterno} ${apellidoMaterno}`
 

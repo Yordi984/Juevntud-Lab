@@ -1,7 +1,25 @@
-import { useState, useRef } from 'react'
+import { useState, useRef,useEffect } from 'react'
 import './perfil.css'
 
-function PerfilEmpresa({ datosEmpresa }) {
+function PerfilEmpresa() {
+
+  const [datosEmpresa, setDatosEmpresa] = useState({
+    nombre_empresa: '',
+    reclutador:'',
+    rubro: '',
+    ubicacion: '',
+    descripcion: '',
+    trabajos: [],
+    reseñas: []
+  })
+
+  useEffect(() => {
+    fetch('http://localhost:3000/empresa')
+      .then(res => res.json())
+      .then(data => setDatosEmpresa(data))
+      .catch(() => {}) 
+  }, [])
+
   const {
     reclutador,
     nombre_empresa,
