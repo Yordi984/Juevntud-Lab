@@ -1,12 +1,12 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(#B873FF, transparent);
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%);
 }
 
 .perfil-wrapper {
   padding: 2rem 1rem;
-  background: linear-gradient(#B873FF, transparent);
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%);
   min-height: 100vh;
 }
 
