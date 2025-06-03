@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Publicar Vacante</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: #3a47d5;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      color: #333;
+      border: 1px solid #e0e0e0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fefefe;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    /* Ajuste para que el símbolo $ aparezca al final visualmente */
+    .sueldo-display {
+      position: relative;
+    }
+
+    .sueldo-display input {
+      padding-right: 1.8rem;
+    }
+
+    .sueldo-display::after {
+      content: "$";
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    button[type="submit"] {
+      background-color: #2f5d8a;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #24486b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner superior -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-icon">JL</div>
+      <div class="logo-text">JuventudLab</div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="form-container">
+    <h2>Publicar Nueva Vacante</h2>
+    <form action="/guardar_vacante" method="POST">
+
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ej. Diseñador UX" required>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe las actividades y responsabilidades..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="area">Área</label>
+        <input type="text" id="area" name="area" placeholder="Ej. Marketing" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecciona</option>
+          <option value="Tiempo completo">Tiempo completo</option>
+          <option value="Medio tiempo">Medio tiempo</option>
+          <option value="Freelance">Freelance</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="habilidades">Habilidades Requeridas</label>
+        <textarea id="habilidades" name="habilidades" rows="3" placeholder="Ej. HTML, CSS, JavaScript"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="modalidad">Modalidad</label>
+        <select id="modalidad" name="modalidad" required>
+          <option value="">Selecciona</option>
+          <option value="Presencial">Presencial</option>
+          <option value="Remoto">Remoto</option>
+        </select>
+      </div>
+
+      <div class="form-group sueldo-display">
+        <label for="sueldo">Sueldo</label>
+        <input type="text" id="sueldo" name="sueldo" required>
+      </div>
+
+      <button type="submit">Publicar Vacante</button>
+    </form>
+  </div>
+
+  <script>
+    // Inicializa con 0$
+    document.addEventListener('DOMContentLoaded', function () {
+      const sueldoInput = document.getElementById('sueldo');
+      sueldoInput.value = '0';
+
+      sueldoInput.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/[^0-9]/g, '');
+        if (value) {
+          e.target.value = Number(value).toLocaleString('es-MX');
+        } else {
+          e.target.value = '0';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+S

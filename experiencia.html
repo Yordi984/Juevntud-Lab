@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JuventudLab - Cancún, Qroo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f3f3f3;
+    }
+    header, nav, main, aside, section {
+      padding: 1rem;
+    }
+    header {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #003A9B;
+    }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      flex-grow: 1;
+      margin: 0 20px;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      flex: 1;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #2557a7;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .job-section {
+      display: flex;
+      padding: 1rem;
+      gap: 1rem;
+    }
+    .job-list {
+      flex: 2;
+    }
+    .job-card {
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .job-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .job-company, .job-location, .job-salary {
+      margin-top: 0.25rem;
+    }
+    .job-details {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .job-right {
+      flex: 1;
+      background: white;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .profile-info h3 {
+      margin: 0 0 0.5rem;
+    }
+    .skills {
+      margin-top: 1rem;
+    }
+    .skills span {
+      display: inline-block;
+      background: #e4e4e4;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      margin: 0.2rem;
+    }
+    .apply-btn {
+      display: inline-block;
+      background: #2557a7;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">JuventudLab</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Título del empleo, palabras clave o empresa" />
+      <input type="text" placeholder="cancún, qroo." />
+      <button>Buscar empleos</button>
+    </div>
+    <div>
+      <span>💬 🔔 👤</span>
+    </div>
+  </header>
+  <main class="job-section">
+    <section class="job-list">
+      <div class="job-card">
+        <div class="job-title">Jr Office Manager</div>
+        <div class="job-company">Sarchentu</div>
+        <div class="job-location">77500, Supermanzana 64, QRoo.</div>
+        <div class="job-salary">$16,000 a $20,000 por mes</div>
+        <div class="job-details">
+          <p>Bilingüe (inglés avanzado/español avanzado) INDISPENSABLE.<br>En nuestra empresa hemos creado un sólido equipo donde buscamos un crecimiento que nos ayude a...</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Recepcionista Bilingüe</div>
+        <div class="job-company">Grupo Hotelero</div>
+        <div class="job-location">Cancún Centro</div>
+        <div class="job-salary">$12,000 por mes</div>
+        <div class="job-details">
+          <p>Experiencia en atención al cliente y manejo de reservaciones.<br>Turno completo. Inglés indispensable.</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Ejecutivo de Ventas</div>
+        <div class="job-company">Corporativo ABC</div>
+        <div class="job-location">Cancún, Q.R.</div>
+        <div class="job-salary">$15,000 + comisiones</div>
+        <div class="job-details">
+          <p>Habilidad para cerrar ventas y generar leads.<br>Trabajo híbrido, herramientas tecnológicas proporcionadas.</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Cocinero</div>
+        <div class="job-company">Hotel Xcaret</div>
+        <div class="job-location">Zona Hotelera</div>
+        <div class="job-salary">$14,000 mensual</div>
+        <div class="job-details">
+          <p>Experiencia en cocina internacional y trabajo bajo presión.<br>Turno rotativo, prestaciones superiores.</p>
+        </div>
+      </div>
+    </section>
+    <aside class="job-right">
+      <h3>General Nurse</h3>
+      <p><strong>Beond</strong><br>Cancún, QRoo.<br>Desde $18,000 por mes</p>
+      <a href="#" class="apply-btn">Postularse ahora</a>
+      <div class="profile-info">
+        <h3>Información del perfil</h3>
+        <div class="skills">
+          <span>Servicio al cliente</span>
+          <span>SOAP</span>
+          <span>Microsoft Excel</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
